@@ -113,14 +113,28 @@
 
     <script>
       const db = firebase.firestore();
+      const storage = firebase.storage();
+
       $("#send").click(function () {
+        var file = document.querySelector("#image").files[0];
+        var storageRef = storage.ref();
+        var storagePath = storageRef.child("image/" + file.name);
+        var upload = storagePath.put(file);
         var item = {
           상품명: $("#title").val(),
           가격: parseInt($("#price").val(), 10),
           내용: $("#content").val(),
           날짜: new Date(),
         };
-        db.collection("product").add(item);
+        db.collection("product")
+          .add(item)
+          .then((result) => {
+            console.log(result);
+            window.location.href = "/index.html";
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       });
     </script>
   </body>
