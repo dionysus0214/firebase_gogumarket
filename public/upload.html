@@ -113,7 +113,15 @@
 
     <script>
       const db = firebase.firestore();
-      db.collection("product").add({ 제목: "토너" });
+      $("#send").click(function () {
+        var item = {
+          상품명: $("#title").val(),
+          가격: parseInt($("#price").val(), 10),
+          내용: $("#content").val(),
+          날짜: new Date(),
+        };
+        db.collection("product").add(item);
+      });
     </script>
   </body>
 </html>
