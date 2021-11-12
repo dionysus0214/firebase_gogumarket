@@ -120,21 +120,34 @@
         var storageRef = storage.ref();
         var storagePath = storageRef.child("image/" + file.name);
         var upload = storagePath.put(file);
-        var item = {
-          상품명: $("#title").val(),
-          가격: parseInt($("#price").val(), 10),
-          내용: $("#content").val(),
-          날짜: new Date(),
-        };
-        db.collection("product")
-          .add(item)
-          .then((result) => {
-            console.log(result);
-            window.location.href = "/index.html";
-          })
-          .catch((err) => {
-            console.log(err);
-          });
+        upload.on(
+          "state_changed",
+          null,
+          (error) => {
+            console.error("실패 사유는", error);
+          },
+          () => {
+            upload.snapshot.ref.getDownloadURL().then((url) => {
+              console.log("업로드된 경로는", url);
+              var item = {
+                상품명: $("#title").val(),
+                가격: parseInt($("#price").val(), 10),
+                내용: $("#content").val(),
+                날짜: new Date(),
+                이미지: url,
+              };
+              db.collection("product")
+                .add(item)
+                .then((result) => {
+                  console.log(result);
+                  window.location.href = "/index.html";
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
+            });
+          }
+        );
       });
     </script>
   </body>
