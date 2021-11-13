@@ -111,6 +111,7 @@
       <button type="submit" class="btn btn-success" id="login">
         로그인하기
       </button>
+      <button class="btn btn-secondary" id="logout">로그아웃하기</button>
     </div>
 
     <script src="/__/firebase/8.6.5/firebase-app.js"></script>
@@ -165,6 +166,10 @@
           .then((result) => {
             console.log(result.user);
           });
+      });
+
+      $("#logout").click(function () {
+        firebase.auth().signOut();
       });
     </script>
   </body>
