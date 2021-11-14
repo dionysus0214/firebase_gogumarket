@@ -66,7 +66,20 @@
       </div>
     </nav>
 
-    <div class="container mt-3"></div>
+    <div class="container">
+      상세페이지
+      <div
+        class="detail-pic my-4"
+        style="background-image: url('https://placeimg.com/640/380/tech')"
+      ></div>
+      <div>
+        <h5>올린사람 : 모름</h5>
+        <hr />
+        <h5 class="title">상품명</h5>
+        <p class="date">올린날짜</p>
+        <p class="price">가격</p>
+      </div>
+    </div>
 
     <script src="/__/firebase/8.6.5/firebase-app.js"></script>
     <script src="/__/firebase/8.6.5/firebase-auth.js"></script>
@@ -97,26 +110,20 @@
 
     <script>
       const db = firebase.firestore();
+      const storage = firebase.storage();
+
+      var queryString = new URLSearchParams(window.location.search);
       db.collection("product")
+        .doc(queryString.get("id"))
         .get()
         .then((result) => {
-          result.forEach((doc) => {
-            console.log(doc.data());
-            var template = `<div class="product">
-              <div class="thumbnail" style="background-image: url('${
-                doc.data().이미지
-              }')"></div>
-              <div class="flex-grow-1 p-4">
-                <h5 class="title"><a href="/detail.html?id=${doc.id}">${
-              doc.data().상품명
-            }</a></h5>
-                <p class="date">2030년 1월 8일</p>
-                <p class="price">${doc.data().가격}원</p>
-                <p class="float-end">🤍0</p>
-              </div>
-            </div>`;
-            $(".container").append(template);
-          });
+          $(".title").html(result.data().상품명);
+          $(".price").html(result.data().가격);
+          $(".date").html(result.data().날짜);
+          $(".detail-pic").css(
+            "background-image",
+            `url(${result.data().이미지})`
+          );
         });
     </script>
   </body>
