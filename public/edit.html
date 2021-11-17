@@ -66,20 +66,11 @@
       </div>
     </nav>
 
-    <div class="container">
-      상세페이지
-      <button class="btn btn-outline-warning" id="edit">수정</button>
-      <div
-        class="detail-pic my-4"
-        style="background-image: url('https://placeimg.com/640/380/tech')"
-      ></div>
-      <div>
-        <h5>올린사람 : 모름</h5>
-        <hr />
-        <h5 class="title"></h5>
-        <p class="date"></p>
-        <p class="price"></p>
-      </div>
+    <div class="container mt-3">
+      <input type="text" class="form-control mt-2" id="title" value="aaa" />
+      <textarea class="form-control mt-2" id="content">content</textarea>
+      <input type="text" class="form-control mt-2" id="price" />
+      <button class="btn btn-danger mt-3" id="send">수정하기</button>
     </div>
 
     <script src="/__/firebase/8.6.5/firebase-app.js"></script>
@@ -114,21 +105,25 @@
       const storage = firebase.storage();
 
       var queryString = new URLSearchParams(window.location.search);
+      queryString.get("id");
+
       db.collection("product")
         .doc(queryString.get("id"))
         .get()
         .then((result) => {
-          $(".title").html(result.data().상품명);
-          $(".price").html(result.data().가격);
-          $(".date").html(result.data().날짜);
-          $(".detail-pic").css(
-            "background-image",
-            `url(${result.data().이미지})`
-          );
+          $("#title").val(result.data().상품명);
+          $("#content").val(result.data().내용);
+          $("#price").val(result.data().가격);
         });
 
-      $("#edit").click(function () {
-        window.location.href = "/edit.html?id=" + queryString.get("id");
+      $("#send").click(function () {
+        var editItem = {
+          상품명: $("#title").val(),
+          내용: $("#content").val(),
+          가격: $("#price").val(),
+        };
+
+        db.collection("product").doc(queryString.get("id")).update(editItem);
       });
     </script>
   </body>
