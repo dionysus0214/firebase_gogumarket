@@ -165,6 +165,8 @@
           .auth()
           .createUserWithEmailAndPassword(email, password)
           .then((result) => {
+            var userInfo = { name: name, email: email };
+            db.collection("user").doc(result.user.uid).set(userInfo);
             result.user.updateProfile({ displayName: name });
           });
       });
