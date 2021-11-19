@@ -2706,3 +2706,42 @@
 [info] i  hosting: 127.0.0.1 - - [17/Nov/2021:13:46:51 +0000] "GET /__/firebase/8.6.5/firebase-firestore.js.map HTTP/1.1" 200 2108215 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [17/Nov/2021:13:46:51 +0000] \"GET /__/firebase/8.6.5/firebase-firestore.js.map HTTP/1.1\" 200 2108215 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36\""}}
 [info] i  hosting: 127.0.0.1 - - [17/Nov/2021:13:46:51 +0000] "GET /__/firebase/8.6.5/firebase-storage.js.map HTTP/1.1" 200 231536 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [17/Nov/2021:13:46:51 +0000] \"GET /__/firebase/8.6.5/firebase-storage.js.map HTTP/1.1\" 200 231536 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36\""}}
 [info] i  hosting: 127.0.0.1 - - [17/Nov/2021:13:46:51 +0000] "GET /__/firebase/8.6.5/firebase-auth.js.map HTTP/1.1" 200 2396087 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36" {"metadata":{"emulator":{"name":"hosting"},"message":"127.0.0.1 - - [17/Nov/2021:13:46:51 +0000] \"GET /__/firebase/8.6.5/firebase-auth.js.map HTTP/1.1\" 200 2396087 \"-\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.45 Safari/537.36\""}}
+[debug] [2021-11-19T07:43:09.124Z] ----------------------------------------------------------------------
+[debug] [2021-11-19T07:43:09.129Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\risin\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js serve
+[debug] [2021-11-19T07:43:09.129Z] CLI Version:   9.12.1
+[debug] [2021-11-19T07:43:09.129Z] Platform:      win32
+[debug] [2021-11-19T07:43:09.130Z] Node Version:  v14.13.0
+[debug] [2021-11-19T07:43:09.145Z] Time:          Fri Nov 19 2021 16:43:09 GMT+0900 (대한민국 표준시)
+[debug] [2021-11-19T07:43:09.146Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-11-19T07:43:09.154Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2021-11-19T07:43:09.211Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-11-19T07:43:09.212Z] > authorizing via signed-in user (tame0214@gmail.com)
+[debug] [2021-11-19T07:43:09.212Z] [iam] checking project gogumarket-a5778 for permissions ["firebase.projects.get"]
+[debug] [2021-11-19T07:43:09.215Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-11-19T07:43:09.216Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-19T07:43:09.556Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Fri, 19 Nov 2021 07:43:04 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-19T07:43:09.596Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/gogumarket-a5778:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2021-11-19T07:43:09.810Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2021-11-19T07:43:09.811Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2021-11-19T07:43:10.655Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 19 Nov 2021 07:43:05 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=583","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-19T07:43:10.660Z] > refreshing access token with scopes: []
+[debug] [2021-11-19T07:43:10.661Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-11-19T07:43:10.902Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","pragma":"no-cache","date":"Fri, 19 Nov 2021 07:43:05 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-11-19T07:43:10.948Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/gogumarket-a5778 [none]
+[debug] [2021-11-19T07:43:11.595Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/gogumarket-a5778 200
+[debug] [2021-11-19T07:43:11.596Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/gogumarket-a5778 {"projectId":"gogumarket-a5778","projectNumber":"609961578281","displayName":"gogumarket","name":"projects/gogumarket-a5778","resources":{"hostingSite":"gogumarket-a5778","storageBucket":"gogumarket-a5778.appspot.com","locationId":"asia-northeast3"},"state":"ACTIVE"}
+[info] 
+[info] === Serving from 'C:\vscode\firebase_gogumarket'...
+[info] 
+[debug] [2021-11-19T07:43:11.606Z] >>> [apiv2][query] GET https://firebasehosting.googleapis.com/v1beta1/projects/gogumarket-a5778/sites 
+[debug] [2021-11-19T07:43:12.818Z] <<< [apiv2][status] GET https://firebasehosting.googleapis.com/v1beta1/projects/gogumarket-a5778/sites 200
+[debug] [2021-11-19T07:43:12.818Z] <<< [apiv2][body] GET https://firebasehosting.googleapis.com/v1beta1/projects/gogumarket-a5778/sites {"sites":[{"name":"projects/609961578281/sites/gogumarket-a5778","defaultUrl":"https://gogumarket-a5778.web.app","type":"DEFAULT_SITE"}]}
+[debug] [2021-11-19T07:43:12.819Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/gogumarket-a5778/webApps/-/config [none]
+[debug] [2021-11-19T07:43:14.220Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/gogumarket-a5778/webApps/-/config 200
+[debug] [2021-11-19T07:43:14.221Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/gogumarket-a5778/webApps/-/config {"projectId":"gogumarket-a5778","appId":"1:609961578281:web:0a0505adf9f830d66db138","storageBucket":"gogumarket-a5778.appspot.com","locationId":"asia-northeast3","apiKey":"AIzaSyBchg2gyuSZ8UOknOWkIPBkC3aR-OOm23Y","authDomain":"gogumarket-a5778.firebaseapp.com","messagingSenderId":"609961578281"}
+[info] i  hosting: Serving hosting files from: public {"metadata":{"emulator":{"name":"hosting"},"message":"Serving hosting files from: \u001b[1mpublic\u001b[22m"}}
+[info] +  hosting: Local server: http://localhost:5000 {"metadata":{"emulator":{"name":"hosting"},"message":"Local server: \u001b[4m\u001b[1mhttp://localhost:5000\u001b[22m\u001b[24m"}}

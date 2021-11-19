@@ -149,7 +149,7 @@
       // localStorage는 브라우저에 몰래 정보 저장하는 공간
       // localStorage는 브라우저 꺼도 남아있고, sessionStorage는 브라우저 끄면 데이터 사라짐
       var userRes = localStorage.getItem("user");
-      $("#userName").html(JSON.parse(userRes.displayName));
+      // $("#userName").html(JSON.parse(userRes.displayName));
       firebase.auth().onAuthStateChanged((user) => {
         if (user) {
           console.log(user);

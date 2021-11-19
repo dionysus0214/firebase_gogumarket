@@ -68,18 +68,19 @@
 
     <div class="container">
       상세페이지
-      <button class="btn btn-outline-warning" id="edit">수정</button>
       <div
         class="detail-pic my-4"
         style="background-image: url('https://placeimg.com/640/380/tech')"
       ></div>
       <div>
-        <h5>올린사람 : 모름</h5>
+        <h5 class="author"></h5>
         <hr />
         <h5 class="title"></h5>
         <p class="date"></p>
         <p class="price"></p>
       </div>
+      <button class="btn btn-outline-warning" id="edit">수정</button>
+      <button class="btn btn-outline-info" id="chat">채팅</button>
     </div>
 
     <script src="/__/firebase/8.6.5/firebase-app.js"></script>
@@ -114,10 +115,18 @@
       const storage = firebase.storage();
 
       var queryString = new URLSearchParams(window.location.search);
+      var myUid = JSON.parse(localStorage.getItem("user")).uid;
+      var sellerUid;
+      var productName;
+
       db.collection("product")
         .doc(queryString.get("id"))
         .get()
         .then((result) => {
+          sellerUid = result.data().uid;
+          productName = result.data().상품명;
+
+          $(".author").html("올린 사람: " + result.data().이름);
           $(".title").html(result.data().상품명);
           $(".price").html(result.data().가격);
           $(".date").html(result.data().날짜);
@@ -129,6 +138,15 @@
 
       $("#edit").click(function () {
         window.location.href = "/edit.html?id=" + queryString.get("id");
+      });
+
+      $("#chat").click(function () {
+        var data = {
+          participant: [myUid, sellerUid],
+          product: productName,
+          date: new Date(),
+        };
+        db.collection("chatroom").add(data);
       });
     </script>
   </body>
