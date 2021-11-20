@@ -147,6 +147,7 @@
       const db = firebase.firestore();
       const storage = firebase.storage();
       var myUid = JSON.parse(localStorage.getItem("user")).uid;
+      var chatroomId;
 
       db.collection("chatroom")
         .where("who", "array-contains", myUid)
@@ -158,8 +159,23 @@
               <h6 class="text-small">${a.id}</h6>
             </li>`;
             $(".chat-list").append(template);
+            $(".list-group-item").click(function () {
+              chatroomId = $(this).children(".text-small").text();
+            });
           });
         });
+
+      $("#send").click(function () {
+        var data = {
+          content: $("#chat-input").val(),
+          data: new Date(),
+          uid: myUid,
+        };
+        db.collection("chatroom")
+          .doc(chatroomId)
+          .collection("messages")
+          .add(data);
+      });
     </script>
   </body>
 </html>
