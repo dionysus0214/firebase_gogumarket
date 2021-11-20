@@ -146,6 +146,20 @@
     <script>
       const db = firebase.firestore();
       const storage = firebase.storage();
+      var myUid = JSON.parse(localStorage.getItem("user")).uid;
+
+      db.collection("chatroom")
+        .where("who", "array-contains", myUid)
+        .get()
+        .then((result) => {
+          result.forEach((a) => {
+            var template = `<li class="list-group-item">
+              <h6>${a.data().product}</h6>
+              <h6 class="text-small">${a.id}</h6>
+            </li>`;
+            $(".chat-list").append(template);
+          });
+        });
     </script>
   </body>
 </html>
