@@ -161,6 +161,20 @@
             $(".chat-list").append(template);
             $(".list-group-item").click(function () {
               chatroomId = $(this).children(".text-small").text();
+              e.stopImmediatePropagation();
+              db.collection("chatroom")
+                .doc(chatroomId)
+                .collection("messages")
+                .orderBy("date")
+                .onSnapshot((result) => {
+                  $(".chat-content").html("");
+                  result.forEach((a) => {
+                    var template = `<li><span class="chat-box">${
+                      a.data().content
+                    }</span></li>`;
+                    $(".chat-content").append(template);
+                  });
+                });
             });
           });
         });
