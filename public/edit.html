@@ -124,6 +124,7 @@
         };
 
         db.collection("product").doc(queryString.get("id")).update(editItem);
+        window.location.href = "/index.html";
       });
     </script>
   </body>

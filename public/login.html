@@ -178,12 +178,14 @@
           .auth()
           .signInWithEmailAndPassword(email, password)
           .then((result) => {
-            console.log(result.user);
+            console.log("login: " + result.user);
+            window.location.href = "/index.html";
           });
       });
 
       $("#logout").click(function () {
         firebase.auth().signOut();
+        console.log("logout");
       });
     </script>
   </body>
