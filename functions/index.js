@@ -1,12 +1,12 @@
 const functions = require("firebase-functions");
+var admin = require('firebase-admin');
+var serviceAccount = require('./gogumarket.json');
 
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount)
+});
+
+const db = admin.firestore();
 
 exports.hello = functions.region('asia-northeast3').https.onRequest((request, response) => {
   functions.logger.info("Hello logs!", {structuredData: true});
@@ -14,10 +14,9 @@ exports.hello = functions.region('asia-northeast3').https.onRequest((request, re
 });
 
 exports.createAlert = functions.region('asia-northeast3')
-.firestore.document('chatroom/{docid}').onCreate((snapshot, context)=>{
-  var product = snapshot.data().product;
-  var who= snapshot.data().who;
+.firestore.document('chatroom/{docid}').onCreate((snapshot)=>{
+  var who = snapshot.data().who;
   
-  db.collection('user').doc(who[0]).update({ alert: '어떤놈이 채팅검' })
-  db.collection('user').doc(who[1]).update({ alert : '어떤놈이 채팅검' })
+  db.collection('user').doc(who[0]).update({ alert: '상대방이 채팅을 희망합니다.' })
+  db.collection('user').doc(who[1]).update({ alert : '상대방이 채팅을 희망합니다.' })
 }); 
