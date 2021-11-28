@@ -113,6 +113,8 @@
 
     <script>
       const db = firebase.firestore();
+      // database는 글자/숫자만 저장(firebase database는 document당 1MB 데이터 제한)
+      // 이미지는 storage에 올리고 이미지 url을 가져와 database에 저장
       const storage = firebase.storage();
 
       $("#send").click(function () {
@@ -124,7 +126,7 @@
           "state_changed",
           null,
           (error) => {
-            console.error("실패 사유는", error);
+            console.error(error);
           },
           () => {
             upload.snapshot.ref.getDownloadURL().then((url) => {
@@ -138,14 +140,16 @@
                 uid: JSON.parse(localStorage.getItem("user")).uid,
                 이름: JSON.parse(localStorage.getItem("user")).displayName,
               };
+              // db.collection(컬렉션명).add({자료명: 'value'}): firebase 데이터베이스에 정보 저장
+              // add()만 사용할 경우 document의 이름은 자동으로 부여
               db.collection("product")
                 .add(item)
                 .then((result) => {
                   console.log(result);
                   window.location.href = "/index.html";
                 })
-                .catch((err) => {
-                  console.log(err);
+                .catch((error) => {
+                  console.log(error);
                 });
             });
           }

@@ -97,6 +97,10 @@
 
     <script>
       const db = firebase.firestore();
+      // db.collection(컬렉션명).get(): 내가 원하는 컬렉션에 있는 모든 문서를 가져옴
+      // .then(() => {}): 가져온 결과를 여기에 담음
+      // 가져온 결과는 forEach()를 붇여서 반복문 돌릴 수 있음
+      // forEach()는 array 자료에 붙여서 왼쪽에 있는 자료 갯수만큼 코드 실행해주는 것
       db.collection("product")
         .get()
         .then((result) => {
