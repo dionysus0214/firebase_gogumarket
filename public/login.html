@@ -146,7 +146,7 @@
       const db = firebase.firestore();
       const storage = firebase.storage();
 
-      // localStorage는 브라우저에 몰래 정보 저장하는 공간
+      // localStorage는 브라우저에 정보 저장하는 공간
       // localStorage는 브라우저 꺼도 남아있고, sessionStorage는 브라우저 끄면 데이터 사라짐
       var userRes = localStorage.getItem("user");
       // $("#userName").html(JSON.parse(userRes.displayName));
@@ -161,12 +161,15 @@
         var email = $("#email-new").val();
         var password = $("#pw-new").val();
         var name = $("#name-new").val();
+        // firebase.auth().createUserWithEmailAndPasword(): firebase에서 제공하는 회원가입기능
+        // uid는 유저의 영구 번호
         firebase
           .auth()
           .createUserWithEmailAndPassword(email, password)
           .then((result) => {
             var userInfo = { name: name, email: email };
             db.collection("user").doc(result.user.uid).set(userInfo);
+            // 가입할 때 이름도 저장하려면 result.user.updateProfile()
             result.user.updateProfile({ displayName: name });
           });
       });
@@ -174,6 +177,7 @@
       $("#login").click(function () {
         var email = $("#email").val();
         var password = $("#pw").val();
+        // firebase.auth().signInWithEmailAndPassword(): firebase authentication을 이용한 로그인
         firebase
           .auth()
           .signInWithEmailAndPassword(email, password)
@@ -184,6 +188,7 @@
       });
 
       $("#logout").click(function () {
+        // firebase.auth().signOut(): 로그아웃
         firebase.auth().signOut();
         console.log("logout");
       });
