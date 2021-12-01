@@ -106,6 +106,8 @@
         .then((result) => {
           result.forEach((doc) => {
             console.log(doc.data());
+            // query string은 서버로 데이터를 보내고 싶을 때 사용
+            // query string: /detail.html?데이터이름=데이터값
             var template = `<div class="product">
               <div class="thumbnail" style="background-image: url('${
                 doc.data().이미지

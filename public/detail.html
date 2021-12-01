@@ -114,11 +114,13 @@
       const db = firebase.firestore();
       const storage = firebase.storage();
 
+      // 현재 url에 있는 query string 알아내려면 new URLSearchParams() 사용
       var queryString = new URLSearchParams(window.location.search);
       var myUid = JSON.parse(localStorage.getItem("user")).uid;
       var sellerUid;
       var productName;
 
+      // db.collection('컬렉션명').doc().get().then(): firebase database에서 게시물 하나 가져오기
       db.collection("product")
         .doc(queryString.get("id"))
         .get()
