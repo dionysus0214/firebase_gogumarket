@@ -149,6 +149,9 @@
       var myUid = JSON.parse(localStorage.getItem("user")).uid;
       var chatroomId;
 
+      // where()을 활용해 조건부로 값 가져오기 가능
+      // where() 내에 필드(자료 제목), 연산자, 자료값 등 넣으면 됨
+      // array 자료에 있는지 확인하고 싶을 때 array-contains 연산자 사용
       db.collection("chatroom")
         .where("who", "array-contains", myUid)
         .get()
@@ -161,6 +164,7 @@
             $(".chat-list").append(template);
             $(".list-group-item").click(function () {
               chatroomId = $(this).children(".text-small").text();
+              // e.stopImmediatePropagation(): 이벤트 버블링 중단
               e.stopImmediatePropagation();
               db.collection("chatroom")
                 .doc(chatroomId)

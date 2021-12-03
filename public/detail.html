@@ -116,6 +116,7 @@
 
       // 현재 url에 있는 query string 알아내려면 new URLSearchParams() 사용
       var queryString = new URLSearchParams(window.location.search);
+      // JSON.parse(): 문자를 object로 바꿔줌
       var myUid = JSON.parse(localStorage.getItem("user")).uid;
       var sellerUid;
       var productName;
@@ -144,6 +145,8 @@
 
       $("#chat").click(function () {
         var data = {
+          // firebase는 OR 연산 못하므로 array 자료로 한 번에 저장하는 게 용이
+          // javascript의 array는 순서가 있으나 firebase의 array는 순서 개념이 없음
           participant: [myUid, sellerUid],
           product: productName,
           date: new Date(),
